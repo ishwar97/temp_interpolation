@@ -9,7 +9,7 @@
 
 -   Free software: MIT License
 -   Documentation: <https://ishwar97.github.io/temp_interpolation>
-    
+
 
 ## Features
 
