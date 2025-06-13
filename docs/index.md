@@ -13,4 +13,4 @@
 
 ## Features
 
--   TODO
+-   Interpolate temporally between image dates to create intermediate images
