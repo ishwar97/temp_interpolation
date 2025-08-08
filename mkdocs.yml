@@ -83,4 +83,5 @@ nav:
         - examples/intro.ipynb
     - API Reference:
           - temp_interpolation module: temp_interpolation.md
+          - foliummap module: foliummap.md
           - common module: common.md
