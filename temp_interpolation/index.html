@@ -15,14 +15,14 @@
         <link rel="canonical" href="https://ishwar97.github.io/temp_interpolation/temp_interpolation/">
       
       
-        <link rel="prev" href="../examples/map/">
+        <link rel="prev" href="../examples/raster/">
       
       
         <link rel="next" href="../foliummap/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
     
     
       
@@ -500,6 +500,29 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/raster/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Raster
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -650,6 +673,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#temp_interpolation.temp_interpolation.Map.add_image" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_image()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#temp_interpolation.temp_interpolation.Map.add_layer_control" class="md-nav__link">
     <span class="md-ellipsis">
       add_layer_control()
@@ -659,9 +691,36 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#temp_interpolation.temp_interpolation.Map.add_raster" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_raster()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#temp_interpolation.temp_interpolation.Map.add_vector" class="md-nav__link">
     <span class="md-ellipsis">
       add_vector()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temp_interpolation.temp_interpolation.Map.add_video" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_video()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temp_interpolation.temp_interpolation.Map.add_wms_layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_wms_layer()
     </span>
   </a>
   
@@ -807,6 +866,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#temp_interpolation.temp_interpolation.Map.add_image" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_image()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#temp_interpolation.temp_interpolation.Map.add_layer_control" class="md-nav__link">
     <span class="md-ellipsis">
       add_layer_control()
@@ -816,9 +884,36 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#temp_interpolation.temp_interpolation.Map.add_raster" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_raster()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#temp_interpolation.temp_interpolation.Map.add_vector" class="md-nav__link">
     <span class="md-ellipsis">
       add_vector()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temp_interpolation.temp_interpolation.Map.add_video" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_video()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temp_interpolation.temp_interpolation.Map.add_wms_layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_wms_layer()
     </span>
   </a>
   
@@ -976,6 +1071,107 @@ Map            (<span title="ipyleaflet.leaflet.Map">Map</span>)
 <span class="sd">        This control allows users to toggle the visibility of layers.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_control</span><span class="p">(</span><span class="n">control</span><span class="o">=</span><span class="n">ipyleaflet</span><span class="o">.</span><span class="n">LayersControl</span><span class="p">())</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_raster</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds Raster layer to Map View</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            url (str): URL or path to raster file. Can be a GeoTIFF, rasterio object, etc.</span>
+<span class="sd">            name (str, optional): Name of the layer. Defaults to None.</span>
+<span class="sd">            colormap (function, optional): Colormap function to apply to raster values. Defaults to None.</span>
+<span class="sd">            zoom_to_layer (bool, optional): Whether to zoom to added layer. Defaults to True.</span>
+<span class="sd">            **kwargs: Additional keyword arguments passed to ipyleaflet.ImageOverlay.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">localtileserver</span><span class="w"> </span><span class="kn">import</span> <span class="n">TileClient</span><span class="p">,</span> <span class="n">get_leaflet_tile_layer</span>
+
+        <span class="n">client</span> <span class="o">=</span> <span class="n">TileClient</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">tile_layer</span> <span class="o">=</span> <span class="n">get_leaflet_tile_layer</span><span class="p">(</span>
+            <span class="n">client</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="n">colormap</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="n">opacity</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">tile_layer</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">center</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">default_zoom</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_image</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">url</span><span class="p">,</span>
+        <span class="n">bounds</span><span class="p">,</span>
+        <span class="n">opacity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds Image layer to Map View</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            url (str): URL or path to image file. Can be a PNG, JPEG, etc.</span>
+<span class="sd">            bounds (list): Bounds of the image in the format [[south, west], [north, east]].</span>
+<span class="sd">            opacity (float, optional): Opacity of the image layer. Defaults to 1.</span>
+<span class="sd">            **kwargs: Additional keyword arguments passed to ipyleaflet.ImageOverlay.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">layer</span> <span class="o">=</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">ImageOverlay</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+            <span class="n">bounds</span><span class="o">=</span><span class="n">bounds</span><span class="p">,</span>
+            <span class="n">opacity</span><span class="o">=</span><span class="n">opacity</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_video</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">url</span><span class="p">,</span>
+        <span class="n">bounds</span><span class="p">,</span>
+        <span class="n">opacity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds Video layer to Map View</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            url (str): URL or path to video file. Can be a MP4, OGG, etc.</span>
+<span class="sd">            bounds (list): Bounds of the video in the format [[south, west], [north, east]].</span>
+<span class="sd">            opacity (float, optional): Opacity of the video layer. Defaults to 1.</span>
+<span class="sd">            **kwargs: Additional keyword arguments passed to ipyleaflet.VideoOverlay.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">layer</span> <span class="o">=</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">VideoOverlay</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+            <span class="n">bounds</span><span class="o">=</span><span class="n">bounds</span><span class="p">,</span>
+            <span class="n">opacity</span><span class="o">=</span><span class="n">opacity</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_wms_layer</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">url</span><span class="p">,</span>
+        <span class="n">layers</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;image/png&quot;</span><span class="p">,</span>
+        <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.1.1&quot;</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds WMS layer to Map View</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            url (str): URL of the WMS service.</span>
+<span class="sd">            layers (str): Comma-separated list of layer names to add.</span>
+<span class="sd">            name (str, optional): Name of the layer. Defaults to None.</span>
+<span class="sd">            format (str, optional): Image format. Defaults to &quot;image/png&quot;.</span>
+<span class="sd">            transparent (bool, optional): Whether the image should have transparency. Defaults to True.</span>
+<span class="sd">            version (str, optional): WMS version. Defaults to &quot;1.1.1&quot;.</span>
+<span class="sd">            **kwargs: Additional keyword arguments passed to ipyleaflet.WMSLayer.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">layer</span> <span class="o">=</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">WMSLayer</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+            <span class="n">layers</span><span class="o">=</span><span class="n">layers</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+            <span class="nb">format</span><span class="o">=</span><span class="nb">format</span><span class="p">,</span>
+            <span class="n">transparent</span><span class="o">=</span><span class="n">transparent</span><span class="p">,</span>
+            <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
 </code></pre></div>
         </details>
 
@@ -1182,6 +1378,90 @@ Defaults to "ROADMAP". Available options : "ROADMAP", "SATELLITE", "HYBRID","TER
 
 
 
+<h3 id="temp_interpolation.temp_interpolation.Map.add_image" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">add_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">bounds</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+
+<a href="#temp_interpolation.temp_interpolation.Map.add_image" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Adds Image layer to Map View</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>url</code></td>
+        <td><code>str</code></td>
+        <td><p>URL or path to image file. Can be a PNG, JPEG, etc.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>bounds</code></td>
+        <td><code>list</code></td>
+        <td><p>Bounds of the image in the format [[south, west], [north, east]].</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>opacity</code></td>
+        <td><code>float</code></td>
+        <td><p>Opacity of the image layer. Defaults to 1.</p></td>
+        <td><code>1</code></td>
+      </tr>
+      <tr>
+        <td><code>**kwargs</code></td>
+        <td></td>
+        <td><p>Additional keyword arguments passed to ipyleaflet.ImageOverlay.</p></td>
+        <td><code>{}</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>temp_interpolation/temp_interpolation.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_image</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">url</span><span class="p">,</span>
+    <span class="n">bounds</span><span class="p">,</span>
+    <span class="n">opacity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds Image layer to Map View</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        url (str): URL or path to image file. Can be a PNG, JPEG, etc.</span>
+<span class="sd">        bounds (list): Bounds of the image in the format [[south, west], [north, east]].</span>
+<span class="sd">        opacity (float, optional): Opacity of the image layer. Defaults to 1.</span>
+<span class="sd">        **kwargs: Additional keyword arguments passed to ipyleaflet.ImageOverlay.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">layer</span> <span class="o">=</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">ImageOverlay</span><span class="p">(</span>
+        <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+        <span class="n">bounds</span><span class="o">=</span><span class="n">bounds</span><span class="p">,</span>
+        <span class="n">opacity</span><span class="o">=</span><span class="n">opacity</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
 <h3 id="temp_interpolation.temp_interpolation.Map.add_layer_control" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">add_layer_control</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
 
@@ -1201,6 +1481,92 @@ Defaults to "ROADMAP". Available options : "ROADMAP", "SATELLITE", "HYBRID","TER
 <span class="sd">    This control allows users to toggle the visibility of layers.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">add_control</span><span class="p">(</span><span class="n">control</span><span class="o">=</span><span class="n">ipyleaflet</span><span class="o">.</span><span class="n">LayersControl</span><span class="p">())</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="temp_interpolation.temp_interpolation.Map.add_raster" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">add_raster</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+
+<a href="#temp_interpolation.temp_interpolation.Map.add_raster" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Adds Raster layer to Map View</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>url</code></td>
+        <td><code>str</code></td>
+        <td><p>URL or path to raster file. Can be a GeoTIFF, rasterio object, etc.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>name</code></td>
+        <td><code>str</code></td>
+        <td><p>Name of the layer. Defaults to None.</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>colormap</code></td>
+        <td><code>function</code></td>
+        <td><p>Colormap function to apply to raster values. Defaults to None.</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>zoom_to_layer</code></td>
+        <td><code>bool</code></td>
+        <td><p>Whether to zoom to added layer. Defaults to True.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>**kwargs</code></td>
+        <td></td>
+        <td><p>Additional keyword arguments passed to ipyleaflet.ImageOverlay.</p></td>
+        <td><code>{}</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>temp_interpolation/temp_interpolation.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_raster</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds Raster layer to Map View</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        url (str): URL or path to raster file. Can be a GeoTIFF, rasterio object, etc.</span>
+<span class="sd">        name (str, optional): Name of the layer. Defaults to None.</span>
+<span class="sd">        colormap (function, optional): Colormap function to apply to raster values. Defaults to None.</span>
+<span class="sd">        zoom_to_layer (bool, optional): Whether to zoom to added layer. Defaults to True.</span>
+<span class="sd">        **kwargs: Additional keyword arguments passed to ipyleaflet.ImageOverlay.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">localtileserver</span><span class="w"> </span><span class="kn">import</span> <span class="n">TileClient</span><span class="p">,</span> <span class="n">get_leaflet_tile_layer</span>
+
+    <span class="n">client</span> <span class="o">=</span> <span class="n">TileClient</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">tile_layer</span> <span class="o">=</span> <span class="n">get_leaflet_tile_layer</span><span class="p">(</span>
+        <span class="n">client</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="n">colormap</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="n">opacity</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">tile_layer</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">center</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">default_zoom</span>
 </code></pre></div>
         </details>
     </div>
@@ -1296,6 +1662,201 @@ Defaults to "ROADMAP". Available options : "ROADMAP", "SATELLITE", "HYBRID","TER
     <span class="k">if</span> <span class="n">zoom_to_layer</span><span class="p">:</span>
         <span class="n">bounds</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">total_bounds</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fit_bounds</span><span class="p">([[</span><span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">bounds</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">bounds</span><span class="p">[</span><span class="mi">2</span><span class="p">]]])</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="temp_interpolation.temp_interpolation.Map.add_video" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">add_video</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">bounds</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+
+<a href="#temp_interpolation.temp_interpolation.Map.add_video" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Adds Video layer to Map View</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>url</code></td>
+        <td><code>str</code></td>
+        <td><p>URL or path to video file. Can be a MP4, OGG, etc.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>bounds</code></td>
+        <td><code>list</code></td>
+        <td><p>Bounds of the video in the format [[south, west], [north, east]].</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>opacity</code></td>
+        <td><code>float</code></td>
+        <td><p>Opacity of the video layer. Defaults to 1.</p></td>
+        <td><code>1</code></td>
+      </tr>
+      <tr>
+        <td><code>**kwargs</code></td>
+        <td></td>
+        <td><p>Additional keyword arguments passed to ipyleaflet.VideoOverlay.</p></td>
+        <td><code>{}</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>temp_interpolation/temp_interpolation.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_video</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">url</span><span class="p">,</span>
+    <span class="n">bounds</span><span class="p">,</span>
+    <span class="n">opacity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds Video layer to Map View</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        url (str): URL or path to video file. Can be a MP4, OGG, etc.</span>
+<span class="sd">        bounds (list): Bounds of the video in the format [[south, west], [north, east]].</span>
+<span class="sd">        opacity (float, optional): Opacity of the video layer. Defaults to 1.</span>
+<span class="sd">        **kwargs: Additional keyword arguments passed to ipyleaflet.VideoOverlay.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">layer</span> <span class="o">=</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">VideoOverlay</span><span class="p">(</span>
+        <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+        <span class="n">bounds</span><span class="o">=</span><span class="n">bounds</span><span class="p">,</span>
+        <span class="n">opacity</span><span class="o">=</span><span class="n">opacity</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="temp_interpolation.temp_interpolation.Map.add_wms_layer" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">add_wms_layer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">layers</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;image/png&#39;</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s1">&#39;1.1.1&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+
+<a href="#temp_interpolation.temp_interpolation.Map.add_wms_layer" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Adds WMS layer to Map View</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>url</code></td>
+        <td><code>str</code></td>
+        <td><p>URL of the WMS service.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>layers</code></td>
+        <td><code>str</code></td>
+        <td><p>Comma-separated list of layer names to add.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>name</code></td>
+        <td><code>str</code></td>
+        <td><p>Name of the layer. Defaults to None.</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>format</code></td>
+        <td><code>str</code></td>
+        <td><p>Image format. Defaults to "image/png".</p></td>
+        <td><code>&#39;image/png&#39;</code></td>
+      </tr>
+      <tr>
+        <td><code>transparent</code></td>
+        <td><code>bool</code></td>
+        <td><p>Whether the image should have transparency. Defaults to True.</p></td>
+        <td><code>True</code></td>
+      </tr>
+      <tr>
+        <td><code>version</code></td>
+        <td><code>str</code></td>
+        <td><p>WMS version. Defaults to "1.1.1".</p></td>
+        <td><code>&#39;1.1.1&#39;</code></td>
+      </tr>
+      <tr>
+        <td><code>**kwargs</code></td>
+        <td></td>
+        <td><p>Additional keyword arguments passed to ipyleaflet.WMSLayer.</p></td>
+        <td><code>{}</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>temp_interpolation/temp_interpolation.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_wms_layer</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">url</span><span class="p">,</span>
+    <span class="n">layers</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;image/png&quot;</span><span class="p">,</span>
+    <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.1.1&quot;</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds WMS layer to Map View</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        url (str): URL of the WMS service.</span>
+<span class="sd">        layers (str): Comma-separated list of layer names to add.</span>
+<span class="sd">        name (str, optional): Name of the layer. Defaults to None.</span>
+<span class="sd">        format (str, optional): Image format. Defaults to &quot;image/png&quot;.</span>
+<span class="sd">        transparent (bool, optional): Whether the image should have transparency. Defaults to True.</span>
+<span class="sd">        version (str, optional): WMS version. Defaults to &quot;1.1.1&quot;.</span>
+<span class="sd">        **kwargs: Additional keyword arguments passed to ipyleaflet.WMSLayer.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">layer</span> <span class="o">=</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">WMSLayer</span><span class="p">(</span>
+        <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+        <span class="n">layers</span><span class="o">=</span><span class="n">layers</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+        <span class="nb">format</span><span class="o">=</span><span class="nb">format</span><span class="p">,</span>
+        <span class="n">transparent</span><span class="o">=</span><span class="n">transparent</span><span class="p">,</span>
+        <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -1414,10 +1975,10 @@ Defaults to "ROADMAP". Available options : "ROADMAP", "SATELLITE", "HYBRID","TER
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "search.highlight", "search.share"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "search.highlight", "search.share"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
+      <script src="../assets/javascripts/bundle.92b07e13.min.js"></script>
       
         <script src="../js/timeago.min.js"></script>
       
