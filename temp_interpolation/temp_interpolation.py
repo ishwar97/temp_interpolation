@@ -1,7 +1,6 @@
 """Main module."""
 
 import os
-import folium
 import ipyleaflet
 
 
