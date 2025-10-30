@@ -17,11 +17,11 @@ class Map(ipyleaflet.Map):
         self.layout.height = height
         self.scroll_wheel_zoom = True
 
-    def add_basemap(self, basemap="OpenTopoMap"):
+    def add_basemap(self, basemap="OpenStreetMap.Mapnik"):
         """Adds basemap to Map View
 
         Args:
-            basemap (str, optional): Base Map. Defaults to "OpenTopoMap".
+            basemap (str, optional): Base Map. Defaults to "OpenStreetMapMapnik".
         """
 
         try:
@@ -29,7 +29,7 @@ class Map(ipyleaflet.Map):
             layer = ipyleaflet.TileLayer(url=url, name=basemap)
             self.add_layer(layer)
         except:
-            url = eval(f"ipyleaflet.basemaps.OpenTopoMap").build_url()
+            url = eval(f"ipyleaflet.basemaps.OpenStreetMap.Mapnik").build_url()
             layer = ipyleaflet.TileLayer(url=url, name=basemap)
             self.add_layer(layer)
 
@@ -192,3 +192,109 @@ class Map(ipyleaflet.Map):
             **kwargs,
         )
         self.add_layer(layer)
+
+    def add_basemap_gui(self, options=None, position="topright"):
+        """Adds an interactive basemap gui to the map at the specified position.
+
+        Args:
+            options (list, optional): Defaults to None.
+                For available options, refer to ipyleaflet.basemaps.
+            position (str, optional): Position on the map to place the widget. Defaults to "topright".
+                Available options include "topleft", "topright", "bottomleft", and "bottomright".
+
+        Returns:
+            None
+        """
+        from ipywidgets import widgets, jslink, FloatSlider
+
+        if options is None:
+            options = [
+                "OpenStreetMap.Mapnik",
+                "OpenTopoMap",
+                "Esri.WorldImagery",
+                "CartoDB.DarkMatter",
+            ]
+        print(options)
+        if "OpenStreeMap.Mapnik" not in options:
+            value = options[0]
+        else:
+            value = "OpenStreeMap.Mapnik"
+        basemap_dropdown = widgets.Dropdown(
+            options=options,
+            value=value,
+            description="Basemap:",
+            style={"description_width": "initial"},
+            layout=widgets.Layout(width="150px"),
+        )
+        basemap_dropdown.layout = widgets.Layout(width="250px")
+
+        def on_basemap_change(change):
+            if change["type"] == "change" and change["name"] == "value":
+                self.add_basemap(basemap=change["new"])
+
+        basemap_dropdown.observe(on_basemap_change)
+
+        toggle = widgets.ToggleButton(
+            value=True,
+            tooltip="Show/Hide Basemap Selector",
+            button_style="",
+            icon="map",
+        )
+        toggle.layout = widgets.Layout(width="40px")
+
+        button = widgets.Button(icon="times")
+        button.layout = widgets.Layout(width="40px")
+
+        hbox = widgets.HBox([toggle, basemap_dropdown, button])
+
+        def on_toggle_change(change):
+            if change["new"]:
+                hbox.children = [toggle, basemap_dropdown, button]
+            else:
+                hbox.children = [toggle]
+
+        toggle.observe(on_toggle_change, names="value")
+
+        def on_button_click(b):
+            hbox.close()
+            toggle.close()
+            basemap_dropdown.close()
+            button.close()
+
+        button.on_click(on_button_click)
+
+        control = ipyleaflet.WidgetControl(
+            widget=hbox,
+            position=position,
+        )
+        self.add_control(control)
+
+    def add_zoomSlider(self, position="bottomright"):
+        """Adds zoom slider to the map
+
+        Args:
+            position (str, optional): position on map where slider is to be added.
+
+        Returns:
+            None
+        """
+        from ipywidgets import widgets, FloatSlider, jslink
+
+        zoom_slider = FloatSlider(
+            value=self.zoom,
+            min=1,
+            max=18,
+            step=1,
+            description="Zoom:",
+            continuous_update=False,
+            orientation="horizontal",
+            readout=True,
+            readout_format="d",
+            layout=widgets.Layout(width="250px"),
+        )
+        jslink((zoom_slider, "value"), (self, "zoom"))
+        control = ipyleaflet.WidgetControl(
+            widget=zoom_slider,
+            position=position,
+        )
+        self.add_control(control)
