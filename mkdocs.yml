@@ -83,6 +83,7 @@ nav:
         - examples/intro.ipynb
         - examples/map.ipynb
         - examples/raster.ipynb
+        - examples/widgets.ipynb
     - API Reference:
           - temp_interpolation module: temp_interpolation.md
           - foliummap module: foliummap.md
