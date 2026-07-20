@@ -2,7 +2,6 @@
 
 """Tests for `temp_interpolation` package."""
 
-
 import unittest
 
 from temp_interpolation import temp_interpolation
